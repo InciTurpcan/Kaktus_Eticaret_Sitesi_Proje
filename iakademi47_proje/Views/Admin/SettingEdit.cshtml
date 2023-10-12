@@ -1,0 +1,88 @@
+﻿@model Setting
+@{
+    ViewData["Title"] = "SettingEdit";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<div class="row" style="margin-top:50px;">
+
+    <div class="col-md-2"></div>
+
+    <div class="col-md-8">
+
+        <!-- BEGIN SAMPLE FORM PORTLET-->
+        <div class="portlet box blue ">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="fa fa-gift"></i> AYAR DÜZELTME FORMU
+                </div>
+                <div class="tools">
+                    <a href="" class="collapse">
+                    </a>
+                    <a href="#portlet-config" data-toggle="modal" class="config">
+                    </a>
+                    <a href="" class="reload">
+                    </a>
+                    <a href="" class="remove">
+                    </a>
+                </div>
+            </div>
+            <div class="portlet-body form">
+                <form class="form-horizontal" role="form" action="/Admin/SettingEdit" method="post">
+
+                    <div class="form-body">
+
+                       
+
+                        <div class="form-group">
+                            <label class="col-md-3 control-label" asp-for="Telephone"></label>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control input-lg" placeholder="Telefon" asp-for="Telephone" required maxlength="11">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-3 control-label" asp-for="Address"></label>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control input-lg" placeholder="Adres" asp-for="Address" required maxlength="100">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-3 control-label" asp-for="Email"></label>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control input-lg" placeholder="Email" asp-for="Email" required maxlength="50">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-3 control-label" asp-for="MainPageCount"></label>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control input-lg" placeholder="" asp-for="MainPageCount" required >
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-3 control-label" asp-for="SubPageCount"></label>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control input-lg" placeholder="" asp-for="SubPageCount" required>
+                            </div>
+                        </div>
+
+                       
+
+                        <input type="hidden" asp-for="SettingID" />
+
+                    </div>
+                    <div class="form-actions right1">
+                        <a asp-action="SettingIndex" class="btn btn-primary">AYAR LİSTESİ</a>
+                        <input type="submit" class="btn green" value="GÜNCELLE" />
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!-- END SAMPLE FORM PORTLET-->
+
+    </div>
+</div>
+

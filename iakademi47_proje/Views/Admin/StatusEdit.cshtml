@@ -1,0 +1,63 @@
+﻿@model Status
+@{
+    ViewData["Title"] = "StatusEdit";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<div class="row" style="margin-top:50px;">
+
+    <div class="col-md-2"></div>
+
+    <div class="col-md-8">
+
+        <!-- BEGIN SAMPLE FORM PORTLET-->
+        <div class="portlet box blue ">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="fa fa-gift"></i> STATÜ DÜZELTME FORMU
+                </div>
+                <div class="tools">
+                    <a href="" class="collapse">
+                    </a>
+                    <a href="#portlet-config" data-toggle="modal" class="config">
+                    </a>
+                    <a href="" class="reload">
+                    </a>
+                    <a href="" class="remove">
+                    </a>
+                </div>
+            </div>
+            <div class="portlet-body form">
+                <form class="form-horizontal" role="form" asp-action="StatusEdit" method="post">
+
+                    <div class="form-body">
+
+                        <div class="form-group">
+                            <label class="col-md-3 control-label" asp-for="StatusName"></label>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control input-lg" placeholder="Statü Adı" asp-for="StatusName" required maxlength="50">
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Aktif Mi?</label>
+                            <div class="col-md-9">
+                                <input asp-for="Active" class="form-control input-lg" />
+                            </div>
+                        </div>
+
+                        <input type="hidden" asp-for="StatusID" />
+
+                    </div>
+                    <div class="form-actions right1">
+                        <a asp-action="StatusIndex" class="btn btn-primary">STATÜ LİSTESİ</a>
+                        <input type="submit" class="btn green" value="GÜNCELLE" />
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!-- END SAMPLE FORM PORTLET-->
+
+    </div>
+</div>

@@ -1,0 +1,170 @@
+﻿@model Product
+@{
+    ViewData["Title"] = "ProductDetails";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+	iakademi47Context context = new iakademi47Context();
+}
+
+<!-- BEGIN SAMPLE TABLE PORTLET-->
+<div class="portlet box yellow">
+	<div class="portlet-title">
+		<div class="caption">
+			<i class="fa fa-cogs"></i>@Html.DisplayFor(model=>model.ProductName) ÜRÜNÜNÜN DETAYLARI
+		</div>
+		<div class="tools">
+			<a href="javascript:;" class="collapse">
+			</a>
+			<a href="#portlet-config" data-toggle="modal" class="config">
+			</a>
+			<a href="javascript:;" class="reload">
+			</a>
+			<a href="javascript:;" class="remove">
+			</a>
+		</div>
+	</div>
+	<div class="portlet-body">
+		<div class="table-responsive">
+			<table class="table table-striped table-bordered table-hover">
+				<thead>
+					<tr>
+						<th>
+							@Html.DisplayNameFor(model=>model.ProductName)
+						</th>
+						<td>
+							@Html.DisplayFor(model=>model.ProductName)
+						</td>
+					</tr>
+
+					<tr>
+						<th>
+							@Html.DisplayNameFor(model=>model.UnitPrice)
+						</th>
+						<td>
+							@Html.DisplayFor(model=>model.UnitPrice)
+						</td>
+					</tr>
+
+					<tr>
+						<th>
+							@Html.DisplayNameFor(model=>model.CategoryID)
+						</th>
+						<td>
+							@{
+								if (Model.CategoryID>0)
+								{
+									string? CategoryName = context.Categories.FirstOrDefault(c => c.CategoryID == Model.CategoryID).CategoryName;
+									@CategoryName
+								}
+							}
+						</td>
+					</tr>
+
+					<tr>
+						<th>
+							@Html.DisplayNameFor(model=>model.SupplierID)
+						</th>
+						<td>
+							@{
+								if (Model.SupplierID > 0)
+								{
+									string? BrandName = context.Suppliers.FirstOrDefault(c => c.SupplierID == Model.SupplierID).BrandName;
+									@BrandName
+								}
+							}
+						</td>
+					</tr>
+
+					<tr>
+						<th>
+							@Html.DisplayNameFor(model=>model.Stock)
+						</th>
+						<td>
+							@Html.DisplayFor(model=>model.Stock)
+						</td>
+					</tr>
+
+					<tr>
+						<th>
+							@Html.DisplayNameFor(model=>model.Discount)
+						</th>
+						<td>
+							@Html.DisplayFor(model=>model.Discount)
+						</td>
+					</tr>
+
+					<tr>
+						<th>
+							@Html.DisplayNameFor(model=>model.StatusID)
+						</th>
+						<td>
+							@{
+								if (Model.StatusID > 0)
+								{
+									string? StatusName = context.Statuses.FirstOrDefault(c => c.StatusID == Model.StatusID).StatusName;
+									@StatusName
+								}
+							}
+						</td>
+					</tr>
+
+					<tr>
+						<th>
+							@Html.DisplayNameFor(model=>model.Keywords)
+						</th>
+						<td>
+							@Html.DisplayFor(model=>model.Keywords)
+						</td>
+					</tr>
+					<tr>
+						<th>
+							@Html.DisplayNameFor(model=>model.Kdv)
+						</th>
+						<td>
+							@Html.DisplayFor(model=>model.Kdv)
+						</td>
+					</tr>
+					<tr>
+						<th>
+							@Html.DisplayNameFor(model=>model.Related)
+						</th>
+						<td>
+							@Html.DisplayFor(model=>model.Related)
+						</td>
+					</tr>
+					<tr>
+						<th>
+							@Html.DisplayNameFor(model=>model.Notes)
+						</th>
+						<td>
+							@Html.DisplayFor(model=>model.Notes)
+						</td>
+					</tr>
+					<tr>
+						<th>
+							@Html.DisplayNameFor(model=>model.PhotoPath)
+						</th>
+						<td>
+							<img src="~/img/resimler/@Model.PhotoPath" style="width:100px; height:40px;" />
+						</td>
+					</tr>
+
+					<tr>
+						<th>
+							@Html.DisplayNameFor(model=>model.Active)
+						</th>
+						<td>
+							@Html.DisplayFor(model=>model.Active)
+						</td>
+					</tr>
+
+
+				</thead>
+
+			</table>
+		</div>
+	</div>
+</div>
+<!-- END SAMPLE TABLE PORTLET-->
+
+
+

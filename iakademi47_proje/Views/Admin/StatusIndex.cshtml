@@ -1,0 +1,95 @@
+﻿@model IEnumerable<Status>
+@{
+    ViewData["Title"] = "StatusIndex";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<div class="row" style="margin-top:50px;">
+
+    <div class="col-md-2"></div>
+
+    <div class="col-md-8">
+
+        <a asp-action="StatusCreate" asp-controller="Admin" class="btn btn-success">YENİ STATÜ EKLE</a>
+        <br />
+        <br />
+        <!-- BEGIN CONDENSED TABLE PORTLET-->
+        <div class="portlet box blue">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="fa fa-picture"></i>STATÜ LİSTESİ
+                </div>
+                <div class="tools">
+                    <a href="javascript:;" class="collapse">
+                    </a>
+                    <a href="#portlet-config" data-toggle="modal" class="config">
+                    </a>
+                    <a href="javascript:;" class="reload">
+                    </a>
+                    <a href="javascript:;" class="remove">
+                    </a>
+                </div>
+            </div>
+            <div class="portlet-body">
+                <div class="table-scrollable">
+                    <table class="table table-condensed table-hover">
+                        <thead>
+                            <tr>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.StatusID)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.StatusName)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Active)
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        @item.StatusID
+                                    </td>
+                                    <td>
+                                        @item.StatusName
+                                    </td>
+                                    <td>
+                                        @if (@item.Active == true)
+                                        {
+                                            <label>AKTİF</label>
+                                        }
+                                        else
+                                        {
+                                            <label>PASİF</label>
+                                        }
+
+                                    </td>
+                                   
+
+                                    <td>
+                                        <a asp-action="StatusEdit" asp-route-id="@item.StatusID" asp-controller="Admin" class="btn btn-primary">DÜZELT</a>
+                                    </td>
+
+                                    <td>
+                                        <a asp-action="StatusDetails" asp-route-id="@item.StatusID" asp-controller="Admin" class="btn btn-info">DETAY</a>
+                                    </td>
+
+                                    <td>
+                                        <a asp-action="StatusDelete" asp-route-id="@item.StatusID" asp-controller="Admin" class="btn btn-danger">SİL</a>
+                                    </td>
+                                </tr>
+                            }
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <!-- END CONDENSED TABLE PORTLET-->
+    </div>
+</div>
+

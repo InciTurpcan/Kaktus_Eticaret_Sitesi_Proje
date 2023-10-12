@@ -1,0 +1,65 @@
+﻿@model Product
+@{
+    ViewData["Title"] = "ProductDelete";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<div class="row" style="margin-top:50px;">
+
+    <div class="col-md-2"></div>
+
+    <div class="col-md-8">
+
+
+        <br />
+        <br />
+        <!-- BEGIN CONDENSED TABLE PORTLET-->
+        <div class="portlet box blue">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="fa fa-picture"></i>ÜRÜN SİLME FORMU
+                </div>
+                <div class="tools">
+                    <a href="javascript:;" class="collapse">
+                    </a>
+                    <a href="#portlet-config" data-toggle="modal" class="config">
+                    </a>
+                    <a href="javascript:;" class="reload">
+                    </a>
+                    <a href="javascript:;" class="remove">
+                    </a>
+                </div>
+            </div>
+            <div class="portlet-body">
+                <div class="table-scrollable">
+                    <table class="table table-condensed table-hover">
+                        <thead>
+                            <tr>
+                                <th>
+                                    @Html.DisplayFor(model => model.ProductID)
+                                </th>
+                                <th>
+                                    @Html.DisplayFor(model => model.ProductName)
+                                </th>
+                                <th>
+                                    @Html.DisplayFor(model => model.Active)
+                                </th>
+                            </tr>
+                        </thead>
+                    </table>
+                    <form class="form-horizontal" role="form" asp-action="ProductDelete" method="post">
+
+                        <input type="hidden" asp-for="ProductID" />
+                        <input type="submit" value="SİL" class="btn btn-danger" onclick="return confirm('Silmek istediğinizden emin misiniz?')" />
+
+                        <a asp-action="ProductIndex" class="btn btn-primary">ÜRÜN LİSTESİ</a>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+        <!-- END CONDENSED TABLE PORTLET-->
+    </div>
+</div>
+
+

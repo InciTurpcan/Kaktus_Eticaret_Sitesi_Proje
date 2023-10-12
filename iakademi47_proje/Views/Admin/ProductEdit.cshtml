@@ -1,0 +1,144 @@
+﻿@model Product
+@{
+    ViewData["Title"] = "ProductEdit";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+
+<div class="row" style="margin-top:50px;">
+
+    <div class="col-md-2"></div>
+
+    <div class="col-md-8">
+
+        <!-- BEGIN SAMPLE FORM PORTLET-->
+        <div class="portlet box red ">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="fa fa-gift"></i> Ürün Düzeltme Formu
+                </div>
+                <div class="tools">
+                    <a href="" class="collapse">
+                    </a>
+                    <a href="#portlet-config" data-toggle="modal" class="config">
+                    </a>
+                    <a href="" class="reload">
+                    </a>
+                    <a href="" class="remove">
+                    </a>
+                </div>
+            </div>
+            <div class="portlet-body form">
+                <form class="form-horizontal" role="form" asp-action="ProductEdit" method="post">
+                    <div class="form-body">
+
+                        <div class="form-group">
+                            <label class="col-md-3 control-label" asp-for="ProductName"></label>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control input-lg" placeholder="Ürün Adı" asp-for="ProductName" required maxlength="50">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-3 control-label" asp-for="UnitPrice"></label>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control input-lg" placeholder="Fiyat" asp-for="UnitPrice" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Ürün Seçiniz</label>
+                            <div class="col-md-9">
+                                @Html.DropDownList("CategoryID", (IEnumerable <SelectListItem>)ViewData["categoryList"],"Seçiniz", new { @class = "form-control input-lg", @required="required" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Marka Seçiniz</label>
+                            <div class="col-md-9">
+                                @Html.DropDownList("SupplierID", (IEnumerable<SelectListItem>)ViewData["supplierList"], "Seçiniz", new { @class = "form-control input-lg", @required = "required" })
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label class="col-md-3 control-label" asp-for="Stock"></label>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control input-lg" placeholder="Stok" asp-for="Stock" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-3 control-label" asp-for="Discount"></label>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control input-lg" placeholder="İndirim" asp-for="Discount">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Statü Seçiniz</label>
+                            <div class="col-md-9">
+                                @Html.DropDownList("StatusID", (IEnumerable <SelectListItem>)ViewData["statusList"],"Seçiniz", new { @class = "form-control input-lg"})
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-3 control-label" asp-for="Keywords"></label>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control input-lg" placeholder="Anahtar Kelime Giriniz" asp-for="Keywords">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-3 control-label" asp-for="Kdv"></label>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control input-lg" placeholder="KDV Giriniz" asp-for="Kdv">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-3 control-label" asp-for="Related"></label>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control input-lg" placeholder="Related" asp-for="Related">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-3 control-label" asp-for="Notes"></label>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control input-lg" placeholder="Notlar" asp-for="Notes">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="PhotoPath" class="col-md-3 control-label"></label>
+                            <div class="col-md-9">
+                                <input type="file" asp-for="PhotoPath" class="form-cpntrol input lg" required />
+                            </div>
+                            <span asp-validation-for="PhotoPath" class="text-danger"> </span>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Aktif mi?</label>
+                            <div class="col-md-9">
+                                <input asp-for="Active" class="form-control input-lg" />
+                            </div>
+                        </div>
+
+                        <input type="hidden" asp-for="ProductID" />
+
+                    </div>
+                    <div class="form-actions right1">
+                        <a asp-action="ProductIndex" class="btn btn-primary">ÜRÜN LİSTESİ</a>
+                        <input type="submit" class="btn green" value="GÜNCELLE" />
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!-- END SAMPLE FORM PORTLET-->
+
+    </div>
+</div>
+
+
+

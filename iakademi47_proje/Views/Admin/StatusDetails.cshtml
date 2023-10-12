@@ -1,0 +1,63 @@
+﻿@model Status
+@{
+    ViewData["Title"] = "StatusDetails";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<!-- BEGIN SAMPLE TABLE PORTLET-->
+<div class="portlet box yellow">
+	<div class="portlet-title">
+		<div class="caption">
+			<i class="fa fa-cogs"></i>@Html.DisplayFor(model=>model.StatusName) STATÜ DETAYLARI
+		</div>
+		<div class="tools">
+			<a href="javascript:;" class="collapse">
+			</a>
+			<a href="#portlet-config" data-toggle="modal" class="config">
+			</a>
+			<a href="javascript:;" class="reload">
+			</a>
+			<a href="javascript:;" class="remove">
+			</a>
+		</div>
+	</div>
+	<div class="portlet-body">
+		<div class="table-responsive">
+			<table class="table table-striped table-bordered table-hover">
+				<thead>
+					<tr>
+						<th>
+							@Html.DisplayNameFor(model=>model.StatusID)
+						</th>
+						<td>
+							@Html.DisplayFor(model=>model.StatusID)
+						</td>
+					</tr>
+
+					<tr>
+						<th>
+							@Html.DisplayNameFor(model=>model.StatusName)
+						</th>
+						<td>
+							@Html.DisplayFor(model=>model.StatusName)
+						</td>
+					</tr>
+
+					<tr>
+						<th>
+							@Html.DisplayNameFor(model=>model.Active)
+						</th>
+						<td>
+							@Html.DisplayFor(model=>model.Active)
+						</td>
+					</tr>
+
+
+				</thead>
+
+			</table>
+		</div>
+	</div>
+</div>
+<!-- END SAMPLE TABLE PORTLET-->
+

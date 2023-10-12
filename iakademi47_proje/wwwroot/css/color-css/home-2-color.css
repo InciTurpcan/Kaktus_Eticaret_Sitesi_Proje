@@ -1,0 +1,35 @@
+.top-nav-area ul li:hover > a,.cart-sub p,.cart-sub .all-cart a,.all-prices,.sp-info-area .product-name a:hover,#sp-bottom-1 #sp-bottom2 .moduletable ul li a:hover, #sp-bottom-1 #sp-bottom2 .moduletable ul li a:hover::before,#sp-bottom-2 #sp-bottomcontact .t-bottom-content p:hover em, .lattest-blog-bottom .title > a:hover,#sp-bottom-2 .sp-bottomcontact .t-bottom-content p:hover em, .lattest-blog-bottom .title > a:hover,.sp-info-area .product-name a:hover,#sp-footer p a,.mean-container .mean-nav ul li a:hover,.meanmenu-reveal.meanclose:hover{
+    color: #d83721!important;
+}
+.sp-dropdown-inner li.sp-menu-item > a:hover,.search_input button.search-button:hover,.h2-top-cart .top-nav-area li,.cart-sub .sub-button > a,.s-btn:hover,.h1-slider .tparrows.preview1:hover::after,.tp-bullets.preview1 .bullet:hover, .tp-bullets.preview1 .bullet.selected,.quick-view-detail,.home-2 .s-button:hover,.singal-p.owl-theme .owl-controls .owl-buttons div:hover,.featured-product-area .nav-scroll span:hover, .best-sellers .nav-scroll span:hover,.newsletter-from input[type="submit"],#scrollUp,.mean-container a.meanmenu-reveal:hover span {
+    background: #d83721!important;
+}
+
+.nk-search-area {
+  background: #6B6B6B none repeat scroll 0 0;
+}
+.search_input button.search-button {
+  background: #000;
+}
+.h2-top-cart .nav-select,.featured-product-area .nav-scroll span:hover a, .best-sellers .nav-scroll span:hover a {
+  color: #fff;
+}
+.newsletter-from input[type="submit"]:hover {
+  background: #464646 none repeat scroll 0 0!important;
+}
+.cart-sub .sub-button > a:hover {
+  background: #000000!important;
+  color: #ffffff;
+}
+
+
+
+
+
+
+
+
+
+
+
+

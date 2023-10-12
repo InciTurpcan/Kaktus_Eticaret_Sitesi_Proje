@@ -1,0 +1,63 @@
+﻿
+@{
+    ViewData["Title"] = "ContactUs";
+    Layout = "~/Views/Shared/Default_Layout.cshtml";
+}
+
+<!-- map bannar area Start  -->
+<div class="map-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 col-md-12 col-lg-12">
+                <div id="googleMap" style="width:100%;height:433px;"></div>
+                <div class="map-info-area">
+                    <h3>BİZİMLE İLETİŞİME GEÇİN</h3>
+                    <p>We possess within us two minds. So far I have written only of the conscious mind. I would now like to introduce you to your second mind, the hidden and mysterious subconscious. Our subconscious mind contains such power and complexity that it literally staggers the imagination.</p>
+                    <div class="clear"></div>
+                    <div class="row">
+                        <div class="col-sm-12 col-md-8 col-lg-8">
+                            <div class="contact-p">
+                                <form action="contact.html#">
+                                    <input type="text" placeholder="Name *">
+                                    <input type="text" placeholder="Email *">
+                                    <input type="text" placeholder="Subject">
+                                    <textarea cols="30" rows="10" placeholder="Message *"></textarea>
+                                    <div class="submit control-group">
+                                        <div class="controls">
+                                            <input type="submit" value="Submit" class="btn btn-large btn-primary submit">
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-md-4 col-lg-4">
+                            <div class="c-right-area">
+                                <h6 class="sppb-addon-title">İLETİŞİM</h6>
+                                <div class="sppb-addon-content">
+                                    <p><span><em class="fa fa-map-marker"></em></span> @await Component.InvokeAsync("Adress")</p>
+                                    <p><span><em class="fa fa-envelope"></em></span> @await Component.InvokeAsync("Email")</p>
+                                    <p><span><em class="fa fa-phone"></em></span> @await Component.InvokeAsync("Telephone")</p>
+                                </div>
+                            </div>
+                            <div class="c-right-area r-next">
+                                <h6 class="sppb-addon-title">ÇALIŞMA SAATLERİ</h6>
+                                <p>Monday &ndash; Friday: 9am to 20 pm Saturday: 9am to 17pm Sunday: day off</p>
+                                <div class="single-icons">
+                                    <ul>
+                                        <li><a data-toggle="tooltip" data-placement="top" title="Follow us Facebook" class="black-tooltip s-1" href="contact.html#"><i class="fa fa-facebook"></i> </a></li>
+                                        <li><a data-toggle="tooltip" data-placement="top" title="Follow us Twitter" class="black-tooltip s-2" href="contact.html#"><i class="fa fa-twitter"></i></a></li>
+                                        <li><a data-toggle="tooltip" data-placement="top" title="Follow us Google-plus" class="black-tooltip s-3" href="contact.html#"><i class="fa fa-google-plus"></i></a></li>
+                                        <li><a data-toggle="tooltip" data-placement="top" title="Follow us Pinterest" class="black-tooltip s-4" href="contact.html#"><i class="fa fa-pinterest"></i></a></li>
+                                        <li><a data-toggle="tooltip" data-placement="top" title="Follow us Behance" class="black-tooltip s-5" href="contact.html#"><i class="fa fa-behance"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- map bannar area End  -->
+

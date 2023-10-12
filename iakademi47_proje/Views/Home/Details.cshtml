@@ -1,0 +1,169 @@
+﻿@model MainPageModel
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/Default_Layout.cshtml";
+}
+
+<!-- Single product area start  -->
+<div class="shop-wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-9 col-md-12 col-lg-12">
+                <div class="back-to-category">
+                    Kategorisi:
+                    <a title="@Model.CategoryName" class="product-details" href="single-product.html#">@Model.CategoryName</a>
+                </div>
+                <div class="clear"></div>
+                <div class="row">
+                    <div class="col-sm-12 col-md-5 col-lg-5">
+                        <div class="product-view">
+                            <div class="full-product-img">
+                                <div class="tab-content">
+                                    <div id="home" class="tab-pane fade in active">
+                                        <img class="zoom_01" src='~/img/resimler/@Model.ProductDetails.PhotoPath' data-zoom-image="~/img/resimler/@Model.ProductDetails.PhotoPath" alt="" style="height:400px;width:400px;" />
+                                    </div>
+
+                                    <div id="menu1" class="tab-pane fade">
+                                        <img class="zoom_01" src='~/img/resimler/@Model.ProductDetails.PhotoPath' data-zoom-image="~/img/resimler/@Model.ProductDetails.PhotoPath" alt="" style="height:400px;width:400px;" />
+                                    </div>
+                                    <div id="menu2" class="tab-pane fade">
+                                        <img class="zoom_01" src='~/img/resimler/@Model.ProductDetails.PhotoPath' data-zoom-image="~/img/resimler/@Model.ProductDetails.PhotoPath" alt="" style="height:400px;width:400px;" />
+                                    </div>
+                                    <div id="menu3" class="tab-pane fade">
+                                        <img class="zoom_01" src='~/img/resimler/@Model.ProductDetails.PhotoPath' data-zoom-image="~/img/resimler/@Model.ProductDetails.PhotoPath" alt="" style="height:400px;width:400px;" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-md-7 col-lg-7">
+                        <div class="single-product-info sp-info-area">
+                            <div class="product-name"><h1>@Model.ProductDetails!.ProductName</h1></div>
+                            <div class="product-rating">
+                                <p class="in-stock">
+                                    Stok:
+                                    @if (Model.ProductDetails.Stock > 0)
+                                    {
+                                        <span>@Model.ProductDetails.Stock</span>
+                                    }
+                                    else
+                                    {
+                                        <span style="background-color:red;color:white;">STOKTA YOK</span>
+                                    }
+                                </p>
+                            </div>
+                            <div class="all-prices">
+                                <span class="sp-price main-price">@Model.ProductDetails.UnitPrice</span>
+                            </div>
+                            <div class="product-short-description">
+                                @Model.ProductDetails.Notes
+                            </div>
+                            <div class="product-quantity">
+                                <div class="s-poraduct-botton">
+
+                                    <div class="submit_crt">
+                                        <a href="/Home/CartProcess/@Model.ProductDetails.ProductID">
+                                            <input type="submit" name="name" value="Sepete Ekle" class="update_cart" style="color:white;font-weight:bold;border-radius:20px;" />
+                                        </a>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                    <div class="col-sm-12 col-md-12 col-lg-12">
+                        <div class="reviews-areas">
+                            <div class="reviw-title">
+                                <ul class="nav nav-tabs">
+                                    <li class="active"><a data-toggle="tab" href="single-product.html#description">Diğer Bilgiler</a></li>
+                                    <li><a data-toggle="tab" href="single-product.html#review">Ürün Bilgileri</a></li>
+                                    <li><a data-toggle="tab" href="single-product.html#infomation">Teknik Bilgiler</a></li>
+                                </ul>
+                            </div>
+                            <div class="revew-content-area">
+                                <div class="tab-content">
+                                    <div id="description" class="tab-pane fade in active">
+                                        <div class="product-infomation">
+                                            <ul class="list-info">
+                                                <li><strong>İndirim</strong> @Model.ProductDetails.Discount</li>
+
+                                                <li><strong>Kdv</strong>@Model.ProductDetails.Kdv</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div id="review" class="tab-pane fade">
+                                        <div class="customer-reviews">
+                                            <h3 class="title-list-reviews">Anahtar Kelimeler</h3>
+                                            <div class="list-reviews">
+                                                <div class="review-item normal">
+                                                    <b class="author"> <strong></strong>@Model.ProductDetails.Keywords</b>
+
+                                                </div>
+                                                <div class="clear"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div id="infomation" class="tab-pane fade">
+                                        <div class="product-infomation">
+                                            <ul class="list-info">
+                                                <li><strong>Tarih</strong> <span class="date">@Model.ProductDetails.AddDate</span></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="rp-area">
+                            <div class="all-p-title">
+                                <h3>Bunlarada Baktılar</h3>
+                            </div>
+                            <div class="singl-shop ">
+                                <div class="row">
+
+                                    @foreach (var item in Model.RelatedProducts)
+                                    {
+                                        <!-- SP-SINGLE Product -->
+                                        <div class="col-sm-6 col-md-3 col-lg-3">
+                                            <div class="sp-single">
+                                                <div class="sp-img-area">
+                                                    <img class="first-img" src="~/img/resimler/@item.PhotoPath" alt="" style="height:200px;width:200px;" />
+                                                    <img class="hover-img" src="~/img/resimler/@item.PhotoPath" alt="" style="height:200px;width:200px;" />
+                                                    <div class="quick-view-detail">
+                                                        <a href="/Home/Details/@item.ProductID">Detaylar</a>
+                                                    </div>
+                                                </div>
+                                                <div class="sp-info-area">
+                                                    <h2 class="product-name"><a title="@item.ProductName" href="/Home/Details/@item.ProductID">@item.ProductName </a></h2>
+                                                    <p class="all-prices">
+                                                        <span class="sp-price main-price">@item.UnitPrice TL</span>
+                                                    </p>
+                                                    <div class="sp-button">
+                                                        <div class="s-button">
+                                                            <a href="/Home/CartProcess/@item.ProductID" data-toggle="tooltip" data-placement="top" title="Sepete Ekle" class="black-tooltip add-to-cart all_src_icon"> <i class="fa fa-shopping-cart"></i> </a>
+                                                        </div>
+                                                        <div class="s-button">
+                                                            <a href="" data-toggle="tooltip" data-placement="top" title="" class="black-tooltip add-to-cart all_src_icon">  </a>
+                                                        </div>
+                                                        <div class="s-button last-b ">
+                                                            <a href="/Home/Details/@item.ProductID" data-toggle="tooltip" data-placement="top" title="Detaylar" class="black-tooltip add-to-cart all_src_icon"> <i class="fa fa-eye"></i> </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--Single product area End  -->
+
+

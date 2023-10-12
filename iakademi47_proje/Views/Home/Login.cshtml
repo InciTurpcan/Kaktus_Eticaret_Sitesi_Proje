@@ -1,0 +1,58 @@
+﻿@model User
+
+@{
+    ViewData["Title"] = "Login";
+    Layout = "~/Views/Shared/Default_Layout.cshtml";
+}
+
+<!-- Loging area Start  -->
+<div class="loging-areas">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 col-md-3 col-lg-3"></div>
+            <div class="col-sm-12 col-md-6 col-lg-6">
+                <div class="login-users">
+                    <form action="@Url.Action("Login","Home")" method="post" id="com-form-login">
+                        <fieldset class="userdata content" style="border-color:black;">
+                            <h2 class="proopc-process-title" style="font-weight:bold;">GİRİŞ YAPINIZ</h2>
+                            <ul class="form-list">
+
+                                <li>
+                                    <label class="required" asp-for="Email"><em>*</em>Email Giriniz</label>
+                                    <div class="input-box" id="com-form-login-username">
+                                        <input type="text" placeholder="EMail" asp-for="Email" class="inputbox" maxlength="100" required>
+                                    </div>
+                                    <span asp-validation-for="Email" class="text-danger"></span>
+                                </li>
+
+                                <li>
+                                    <label class="required" asp-for="Password"><em>*</em>Şifre Giriniz</label>
+                                    <div class="input-box" id="com-form-login-password">
+                                        <input type="password" placeholder="Şifre" asp-for="Password" class="inputbox" id="modlgn-passwd" maxlength="100" required>
+                                    </div>
+                                    <span asp-validation-for="Password" class="text-danger"></span>
+                                </li>
+
+                            </ul>
+                        </fieldset>
+                        <div class="submit_crt">
+                            <input type="submit" value="Giriş Yapınız" class="update_cart" name="Submit">
+
+                            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                            <span class="badge badge-warning" style="font-size:20px;">veya</span>
+                            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+
+                            <a href="@Url.Action("Register","Home")" title="Üye Ol">
+                                <input type="button" class="update_cart" value="Üye Ol" />
+                            </a>
+
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Loging area area End  -->
+

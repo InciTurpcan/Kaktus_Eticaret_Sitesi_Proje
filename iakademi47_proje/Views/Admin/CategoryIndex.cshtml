@@ -1,0 +1,165 @@
+﻿@model IEnumerable<Category>
+
+@{
+    ViewData["Title"] = "CategoryIndex";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+    iakademi47Context context = new iakademi47Context();
+}
+
+<div class="row" style="margin-top:50px;">
+
+    <div class="col-md-2"></div>
+
+    <div class="col-md-8">
+
+        <a asp-action="CategoryCreate" asp-controller="Admin" class="btn btn-success">YENİ KATEGORİ EKLE</a>
+        <br />
+        <br />
+        <!-- BEGIN CONDENSED TABLE PORTLET-->
+        <div class="portlet box purple">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="fa fa-picture"></i>KATEGORİ LİSTESİ
+                </div>
+                <div class="tools">
+                    <a href="javascript:;" class="collapse">
+                    </a>
+                    <a href="#portlet-config" data-toggle="modal" class="config">
+                    </a>
+                    <a href="javascript:;" class="reload">
+                    </a>
+                    <a href="javascript:;" class="remove">
+                    </a>
+                </div>
+            </div>
+            <div class="portlet-body">
+                <div class="table-scrollable">
+                    <table class="table table-condensed table-hover">
+                        <thead>
+                            <tr>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.CategoryID)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.CategoryName)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Active)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.ParentID)
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            @foreach (var item in Model.Where(c => c.ParentID == 0))
+                            {
+                                <tr>
+                                    <td>
+                                        @item.CategoryID
+                                    </td>
+                                    <td>
+                                        @item.CategoryName
+                                    </td>
+                                    <td>
+                                        @if (@item.Active == true)
+                                        {
+                                            <label>AKTİF</label>
+                                        }
+                                        else
+                                        {
+                                            <label>PASİF</label>
+                                        }
+
+                                    </td>
+                                    <td>
+                                        @{
+                                            if (item.ParentID > 0)
+                                            {
+                                                string? CategoryName = context.Categories.FirstOrDefault(c => c.CategoryID == item.ParentID).CategoryName;
+                                                @CategoryName
+                                            }
+                                            else
+                                            {
+                                                <label style="background-color:red;color:white;">Ana Kategori</label>
+                                            }
+                                        }
+                                    </td>
+
+                                    <td>
+                                        <a asp-action="CategoryEdit" asp-route-id="@item.CategoryID" asp-controller="Admin" class="btn btn-primary">DÜZELT</a>
+                                    </td>
+
+                                    <td>
+                                        <a asp-action="CategoryDetails" asp-route-id="@item.CategoryID" asp-controller="Admin" class="btn btn-info">DETAY</a>
+                                    </td>
+
+                                    <td>
+                                        <a asp-action="CategoryDelete" asp-route-id="@item.CategoryID" asp-controller="Admin" class="btn btn-danger">SİL</a>
+                                    </td>
+                                </tr>
+
+                                @foreach (var subitem in Model)
+                                {
+                                    if (item.CategoryID == subitem.ParentID)
+                                    {
+                                        //yukardan gelen ana kategoriye ait tüm alt kategoriler icin buraya girer
+                                        <tr>
+                                            <td>
+                                                @subitem.CategoryID
+                                            </td>
+                                            <td>
+                                                @subitem.CategoryName
+                                            </td>
+                                            <td>
+                                                @if (@subitem.Active == true)
+                                                {
+                                                    <label>AKTİF</label>
+                                                }
+                                                else
+                                                {
+                                                    <label>PASİF</label>
+                                                }
+
+                                            </td>
+                                            <td>
+                                                @{
+                                                    if (subitem.ParentID > 0)
+                                                    {
+                                                        string? CategoryName = context.Categories.FirstOrDefault(c => c.CategoryID == subitem.ParentID).CategoryName;
+                                                        @CategoryName
+                                                    }
+                                                    else
+                                                    {
+                                                        <label style="background-color:red;color:white;">Ana Kategori</label>
+                                                    }
+                                                }
+                                            </td>
+
+                                            <td>
+                                                <a asp-action="CategoryEdit" asp-route-id="@subitem.CategoryID" asp-controller="Admin" class="btn btn-primary">DÜZELT</a>
+                                            </td>
+
+                                            <td>
+                                                <a asp-action="CategoryDetails" asp-route-id="@subitem.CategoryID" asp-controller="Admin" class="btn btn-info">DETAY</a>
+                                            </td>
+
+                                            <td>
+                                                <a asp-action="CategoryDelete" asp-route-id="@subitem.CategoryID" asp-controller="Admin" class="btn btn-danger">SİL</a>
+                                            </td>
+                                        </tr>
+                                    }
+                                }
+
+                            }
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <!-- END CONDENSED TABLE PORTLET-->
+    </div>
+</div>
+

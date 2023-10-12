@@ -1,0 +1,72 @@
+﻿@model Supplier
+@{
+    ViewData["Title"] = "SupplierDetails";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<!-- BEGIN SAMPLE TABLE PORTLET-->
+<div class="portlet box yellow">
+	<div class="portlet-title">
+		<div class="caption">
+			<i class="fa fa-cogs"></i>@Html.DisplayFor(model=>model.BrandName) MARKASININ DETAYLARI
+		</div>
+		<div class="tools">
+			<a href="javascript:;" class="collapse">
+			</a>
+			<a href="#portlet-config" data-toggle="modal" class="config">
+			</a>
+			<a href="javascript:;" class="reload">
+			</a>
+			<a href="javascript:;" class="remove">
+			</a>
+		</div>
+	</div>
+	<div class="portlet-body">
+		<div class="table-responsive">
+			<table class="table table-striped table-bordered table-hover">
+				<thead>
+					<tr>
+						<th>
+							@Html.DisplayNameFor(model=>model.SupplierID)
+						</th>
+						<td>
+							@Html.DisplayFor(model=>model.SupplierID)
+						</td>
+					</tr>
+
+					<tr>
+						<th>
+							@Html.DisplayNameFor(model=>model.BrandName)
+						</th>
+						<td>
+							@Html.DisplayFor(model=>model.BrandName)
+						</td>
+					</tr>
+
+					<tr>
+						<th>
+							@Html.DisplayNameFor(model=>model.PhotoPath)
+						</th>
+						<td>
+							<img src="~/img/resimler/@Model.PhotoPath" style="width:100px; height:40px;" />
+						</td>
+					</tr>
+
+					<tr>
+						<th>
+							@Html.DisplayNameFor(model=>model.Active)
+						</th>
+						<td>
+							@Html.DisplayFor(model=>model.Active)
+						</td>
+					</tr>
+
+
+				</thead>
+
+			</table>
+		</div>
+	</div>
+</div>
+<!-- END SAMPLE TABLE PORTLET-->
+

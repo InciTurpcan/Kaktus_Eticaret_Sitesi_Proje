@@ -1,0 +1,64 @@
+﻿@model List<vw_MyOrders>
+@{
+    ViewData["Title"] = "MyOrders";
+    Layout = "~/Views/Shared/Default_Layout.cshtml";
+}
+
+<!-- wishlist area start  -->
+<div class="wishlist-wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 col-md-12 col-lg-12 ">
+                <div class="cart-wrapper table-responsive">
+                    <table class="shop_table cart ">
+                        <thead>
+                            <tr>
+                                <th class="product-price">SİPARİŞ NO</th>
+                                <th colspan="2" class="product-name">ÜRÜN ADI</th>
+                                <th class="product-price">TARİH</th>
+                                <th class="product-price">ADET</th>
+                                <th class="product-price">FİYAT</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            @foreach (var item in Model)
+                            {
+                                <tr class="cart_item">
+
+                                    <td class="product-name">
+                                        <a href="">@item.OrderGroupGUID</a>
+                                    </td>
+
+                                    <td class="product-thumbnail">
+                                        <a href="/Home/Details/@item.ProductID"><img width="114" height="130" alt="04" class="attachment-shop_thumbnail wp-post-image" src="~/img/resimler/@item.PhotoPath"></a>
+                                    </td>
+
+                                    <td class="product-name">
+                                        <a href="">@item.ProductName</a>
+                                    </td>
+
+                                    <td class="product-name">
+                                        <a href="">@item.OrderDate</a>
+                                    </td>
+
+                                    <td class="product-name">
+                                        <a href="">@item.Qantity</a>
+                                    </td>
+
+                                    <td class="product-name">
+                                        <a href="">@item.UnitPrice</a>
+                                    </td>
+
+                                </tr>
+                            }
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- wishlist area end  -->
+

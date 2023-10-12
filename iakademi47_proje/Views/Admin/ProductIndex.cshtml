@@ -1,0 +1,186 @@
+﻿@model IEnumerable<Product>
+@{
+    ViewData["Title"] = "ProductIndex";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+    iakademi47Context context = new iakademi47Context();
+}
+
+<div class="row" style="margin-top:50px;">
+
+
+
+    <div class="col-md-12">
+
+        <a asp-action="ProductCreate" asp-controller="Admin" class="btn btn-success">YENİ ÜRÜN EKLE</a>
+        <br />
+        <br />
+        <!-- BEGIN CONDENSED TABLE PORTLET-->
+        <div class="portlet box blue">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="fa fa-picture"></i>ÜRÜN LİSTESİ
+                </div>
+                <div class="tools">
+                    <a href="javascript:;" class="collapse">
+                    </a>
+                    <a href="#portlet-config" data-toggle="modal" class="config">
+                    </a>
+                    <a href="javascript:;" class="reload">
+                    </a>
+                    <a href="javascript:;" class="remove">
+                    </a>
+                </div>
+            </div>
+            <div class="portlet-body">
+                <div class="table-scrollable">
+                    <table class="table table-condensed table-hover">
+                        <thead>
+                            <tr>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.ProductID)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.ProductName)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.UnitPrice)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.CategoryID)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.SupplierID)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Stock)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Discount)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.StatusID)
+                                </th>
+            
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Kdv)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Related)
+                                </th>
+                                 <th>
+                                    @Html.DisplayNameFor(model => model.Notes)
+                                </th>
+                                 <th>
+                                    @Html.DisplayNameFor(model => model.PhotoPath)
+                                </th>
+                                 <th>
+                                    @Html.DisplayNameFor(model => model.Active)
+                                </th>
+
+
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        @item.ProductID
+                                    </td>
+
+                                    <td>
+                                        @item.ProductName
+                                    </td>
+
+                                     <td>
+                                        @item.UnitPrice
+                                    </td>
+
+                                    <td>
+                                        @{
+                                                string? CategoryName = context.Categories.FirstOrDefault(c => c.CategoryID == item.CategoryID).CategoryName;
+                                                @CategoryName
+                                        }
+                                    </td>
+
+                                    <td>
+                                        @{
+                                            string? BrandName = context.Suppliers.FirstOrDefault(c => c.SupplierID == item.SupplierID).BrandName;
+                                            @BrandName
+                                        }
+                                    </td>
+
+                                    <td>
+                                        @item.Stock
+                                    </td>
+
+                                     <td>
+                                        @item.Discount
+                                    </td>
+
+                                    <td>
+                                        @{
+                                            string? StatusName = context.Statuses.FirstOrDefault(c => c.StatusID == item.StatusID).StatusName;
+                                            @StatusName
+                                        }
+                                    </td>
+                                   
+                                     <td>
+                                        @item.Kdv
+                                    </td>
+
+                                    <td>
+                                        @item.Related
+                                    </td>
+
+                                    <td>
+                                        @item.Notes
+                                    </td>
+
+                                    <td>
+                                        <img src="~/img/resimler/@item.PhotoPath" style="width:100px; height:40px;" />
+                                    </td>
+                             
+                                    <td>
+                                        @if (@item.Active == true)
+                                        {
+                                            <label>AKTİF</label>
+                                        }
+                                        else
+                                        {
+                                            <label>PASİF</label>
+                                        }
+
+                                    </td>
+                                   
+
+                                    <td>
+                                        <a asp-action="ProductEdit" asp-route-id="@item.ProductID" asp-controller="Admin" class="btn btn-primary">DÜZELT</a>
+                                    </td>
+
+                                    <td>
+                                        <a asp-action="ProductDetails" asp-route-id="@item.ProductID" asp-controller="Admin" class="btn btn-info">DETAY</a>
+                                    </td>
+
+                                    <td>
+                                        <a asp-action="ProductDelete" asp-route-id="@item.ProductID" asp-controller="Admin" class="btn btn-danger">SİL</a>
+                                    </td>
+                                </tr>
+
+                               
+
+                                          
+                                
+
+                            }
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <!-- END CONDENSED TABLE PORTLET-->
+    </div>
+</div>
+
